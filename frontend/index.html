@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Videojocs RA9</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1 class="logo">🎮 Gestor de Videojocs RA9</h1>
+  </header>
+
+  <!-- Formulari per Afegir / Modificar Joc -->
+  <section id="addSection">
+    <h2>Afegir / Modificar Videjoc</h2>
+    <form id="gameForm" enctype="multipart/form-data">
+      <!-- quan editem, omplirem aquest camp ocòult amb l'ID -->
+      <input type="hidden" id="gameId">
+
+      <div class="form-row">
+        <label for="title">Títol</label>
+        <input type="text" id="title" placeholder="Títol del joc" required>
+      </div>
+
+      <div class="form-row">
+        <label for="platform">Plataforma</label>
+        <input type="text" id="platform" placeholder="Plataforma" required>
+      </div>
+
+      <div class="form-row">
+        <label for="year">Any de llançament</label>
+        <input type="number" id="year" placeholder="Any" required>
+      </div>
+
+      <div class="form-row">
+        <label for="image">Foto del joc</label>
+        <input type="file" id="image" accept="image/*">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" id="saveBtn">Guardar</button>
+        <button type="button" id="cancelBtn" class="hidden">Cancelar</button>
+      </div>
+    </form>
+    <p id="errorMsg" class="error hidden"></p>
+  </section>
+
+  <!-- Llista de Jocs -->
+  <section id="listSection">
+    <h2>Llista de Videojocs</h2>
+    <ul id="gamesList">
+      <!-- Aquest <li> és un exemple; el JavaScript l'omplirà dinàmicament -->
+      <!--
+      <li data-id="...">
+        <img src="ruta/a/la/imatge.jpg" alt="Títol del joc" class="thumb">
+        <div class="info">
+          <strong>Títol del joc</strong><br>
+          Plataforma (Any)
+        </div>
+        <div class="actions">
+          <button class="editBtn">✏️</button>
+          <button class="deleteBtn">🗑️</button>
+        </div>
+      </li>
+      -->
+    </ul>
+  </section>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

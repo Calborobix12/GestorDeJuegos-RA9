@@ -1,0 +1,114 @@
+/* Reset bàsic */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+  background: #f0f0f0;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+}
+
+/* Formulari */
+#addSection {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  margin-bottom: 0.75rem;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.form-row input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-actions {
+  margin-top: 1rem;
+}
+
+.form-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+#saveBtn {
+  background: #28a745;
+  color: white;
+}
+
+#cancelBtn {
+  background: #6c757d;
+  color: white;
+}
+
+/* Llista */
+#listSection {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+#gamesList {
+  list-style: none;
+}
+
+#gamesList li {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#gamesList li:last-child {
+  border: none;
+}
+
+.thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+.info {
+  flex: 1;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+/* Missatges i ocultar elements */
+.error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
