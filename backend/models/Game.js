@@ -1,10 +1,11 @@
+// backend/models/Game.js
 import mongoose from 'mongoose';
 
-const GameSchema = new mongoose.Schema({
-  title:     { type: String, required: true },
-  platform:  { type: String, required: true },
-  year:      { type: Number, required: true },
-  imageUrl:  { type: String }
+const gameSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  platform: { type: String, required: true },
+  year: { type: Number, required: true },
+  imageUrl: { type: String, default: '' },
 }, { timestamps: true });
 
-export default mongoose.model('Game', GameSchema);
+export default mongoose.model('Game', gameSchema);
