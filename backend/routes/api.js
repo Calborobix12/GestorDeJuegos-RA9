@@ -1,4 +1,3 @@
-// backend/routes/api.js
 import express from 'express';
 import multer from 'multer';
 import * as controller from '../controllers/gameController.js';

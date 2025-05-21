@@ -1,4 +1,3 @@
-// backend/controllers/gameController.js
 import Game from '../models/Game.js';
 import { unlinkSync } from 'fs';
 import path from 'path';
