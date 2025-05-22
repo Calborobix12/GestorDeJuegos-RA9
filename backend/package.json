@@ -7,9 +7,9 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "cors": "",
-    "express": "",
-    "mongoose": "",
-    "multer": "^1.4.4-lts.1"
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0",
+    "multer": "^1.4.4"
   }
 }

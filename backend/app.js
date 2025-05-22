@@ -1,31 +1,40 @@
 import express from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
 import path from 'path';
-import { connectDB } from './config/db.js';
-import apiRoutes from './routes/api.js';
 import { fileURLToPath } from 'url';
 
-const app = express();
-connectDB();
+import apiRoutes from './routes/api.js';
 
+// Para usar __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const app = express();
+const PORT = 3002;
+
+// Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Serveix imatges pujades
+// Servir imágenes y archivos estáticos
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Serveix el frontend
+// Servir frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) return next();
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
-});
 
-// Rutes API
+// Rutas API
 app.use('/api', apiRoutes);
 
-const PORT = 3002;
-app.listen(PORT, () => console.log(`🖥️ Servidor backend escoltant a http://localhost:${PORT}`));
+// Conexión MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/gestorvideojocs')
+  .then(() => {
+    console.log('🔌 MongoDB connectat!');
+    app.listen(PORT, () => {
+      console.log(`🖥️ Servidor backend escoltant a http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('❌ Error de connexió a MongoDB:', err.message);
+  });

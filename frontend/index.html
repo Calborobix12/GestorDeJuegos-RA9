@@ -15,7 +15,6 @@
   <section id="addSection">
     <h2>Afegir / Modificar Videjoc</h2>
     <form id="gameForm" enctype="multipart/form-data">
-      <!-- quan editem, omplirem aquest camp ocòult amb l'ID -->
       <input type="hidden" id="gameId">
 
       <div class="form-row">
@@ -49,22 +48,7 @@
   <!-- Llista de Jocs -->
   <section id="listSection">
     <h2>Llista de Videojocs</h2>
-    <ul id="gamesList">
-      <!-- Aquest <li> és un exemple; el JavaScript l'omplirà dinàmicament -->
-      <!--
-      <li data-id="...">
-        <img src="ruta/a/la/imatge.jpg" alt="Títol del joc" class="thumb">
-        <div class="info">
-          <strong>Títol del joc</strong><br>
-          Plataforma (Any)
-        </div>
-        <div class="actions">
-          <button class="editBtn">✏️</button>
-          <button class="deleteBtn">🗑️</button>
-        </div>
-      </li>
-      -->
-    </ul>
+    <ul id="gamesList"></ul>
   </section>
 
   <script type="module" src="js/main.js"></script>
