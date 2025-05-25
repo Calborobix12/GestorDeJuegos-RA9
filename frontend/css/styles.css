@@ -1,66 +1,184 @@
+/* styles.css */
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuerpo y tipografía */
 body {
-  font-family: sans-serif;
-  max-width: 800px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 1rem;
-  background: #f9f9f9;
+  background-color: #f0f2f5;
+  color: #333;
 }
 
 h1, h2 {
-  color: #333;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+/* Formularios */
+form {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .form-row {
   margin-bottom: 1rem;
 }
 
-input[type="text"], input[type="number"], input[type="file"] {
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.3rem;
-  box-sizing: border-box;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fafafa;
+  font-size: 1rem;
 }
 
 .form-actions {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
 }
 
 button {
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button#saveBtn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button#saveBtn:hover {
+  background-color: #0056b3;
+}
+
+button#cancelBtn {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+button#cancelBtn:hover {
+  background-color: #5a6268;
+}
+
+/* Errores */
+.error {
+  color: #c00;
+  margin-top: 0.5rem;
 }
 
 .hidden {
   display: none;
 }
 
-.error {
-  color: red;
-}
-
+/* Galería de juegos */
 ul#gamesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
   list-style: none;
+  margin-top: 2rem;
   padding: 0;
 }
 
 ul#gamesList li {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   background: #fff;
   border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Contenedor de imagen para asegurar proporción */
+.image-container {
+  width: 220px;
+  height: 220px;
   border-radius: 8px;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: hidden;
 }
 
-.thumb {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
+/* Imagen de portada: mantiene toda la imagen sin recortes */
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.actions button {
-  margin-left: 0.5rem;
+/* Información del juego */
+.info {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.info strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Botones de acción */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button.editBtn {
+  background-color: #ffc107;
+  color: #333;
+}
+
+button.editBtn:hover {
+  background-color: #e0a800;
+}
+
+button.deleteBtn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+button.deleteBtn:hover {
+  background-color: #c82333;
 }
