@@ -1,3 +1,4 @@
+// backend/models/Game.js
 import mongoose from 'mongoose';
 
 const GameSchema = new mongoose.Schema({
