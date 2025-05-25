@@ -1,0 +1,59 @@
+@startuml
+skinparam style strictuml
+
+package "Backend" {
+  class Game {
+    - id: Number
+    - title: String
+    - platform: String
+    - year: Number
+    - imageUrl: String
+  }
+
+  class GameController {
+    + getAllGames()
+    + createGame(data)
+    + updateGame(id, data)
+    + deleteGame(id)
+  }
+
+  class ApiRouter {
+    + GET /api/games
+    + POST /api/games
+    + PUT /api/games/:id
+    + DELETE /api/games/:id
+  }
+
+  GameController --> Game
+  ApiRouter --> GameController
+}
+
+package "Frontend" {
+  class model.js {
+    + fetchGames()
+    + createGame(data)
+    + updateGame(id, data)
+    + deleteGame(id)
+  }
+
+  class view.js {
+    + renderGames(games, onEdit, onDelete)
+    + populateForm(game)
+    + clearForm()
+  }
+
+  class viewmodel.js {
+    + init()
+    + handleSubmit(event)
+    + handleEdit(game)
+    + handleDelete(id)
+  }
+
+  viewmodel.js --> model.js
+  viewmodel.js --> view.js
+}
+
+User --> viewmodel.js
+model.js --> ApiRouter
+@enduml
+
