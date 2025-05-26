@@ -1,4 +1,5 @@
 export function renderGames(games, onEdit, onDelete) {
+  // Genera y muestra la lista de juegos con sus botones de editar y borrar
   const list = document.getElementById('gamesList');
   list.innerHTML = '';
 
@@ -36,6 +37,7 @@ export function renderGames(games, onEdit, onDelete) {
 }
 
 export function populateForm(game) {
+  // Rellena el formulario con los datos de un juego para editarlo
   document.getElementById('gameId').value = game.id;
   document.getElementById('title').value = game.title;
   document.getElementById('platform').value = game.platform;
@@ -44,6 +46,7 @@ export function populateForm(game) {
 }
 
 export function clearForm() {
+  // Limpia el formulario y oculta el botón de cancelar y mensajes de error
   document.getElementById('gameForm').reset();
   document.getElementById('gameId').value = '';
   document.getElementById('cancelBtn').classList.add('hidden');

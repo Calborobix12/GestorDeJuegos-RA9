@@ -1,11 +1,14 @@
+// URL base per a les crides a l’API de videojocs
 const API_URL = '/api/games';
 
+// Obté la llista de jocs des del servidor
 export async function fetchGames() {
   const res = await fetch(API_URL);
   if (!res.ok) throw new Error('No s’han pogut carregar els jocs');
   return await res.json();
 }
 
+// Envia un nou joc al servidor utilitzant FormData
 export async function createGame(data) {
   const formData = new FormData();
   for (const key in data) {
@@ -19,6 +22,7 @@ export async function createGame(data) {
   return await res.json();
 }
 
+// Actualitza un joc existent al servidor amb les dades del formulari
 export async function updateGame(id, data) {
   const formData = new FormData();
   for (const key in data) {
@@ -32,6 +36,7 @@ export async function updateGame(id, data) {
   return await res.json();
 }
 
+// Elimina un joc específic del servidor per ID
 export async function deleteGame(id) {
   const res = await fetch(`${API_URL}/${id}`, {
     method: 'DELETE'

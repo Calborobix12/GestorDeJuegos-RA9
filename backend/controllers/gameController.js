@@ -1,19 +1,17 @@
-// backend/controllers/gameController.js
 import Game from '../models/Game.js';
 import { unlinkSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Para resolver correctamente paths en ES modules
+// Resolució de __dirname per a ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Crea un nou joc i retorna l’objecte creat
 export async function create(req, res) {
   try {
     const { title, platform, year } = req.body;
-    // Guarda ruta pública de la imagen
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
-
     const game = await Game.create({ title, platform, year, imageUrl });
     res.status(201).json(game.toJSON());
   } catch (err) {
@@ -21,6 +19,7 @@ export async function create(req, res) {
   }
 }
 
+// Llegeix i retorna tots els jocs ordenats per data de creació
 export async function readAll(req, res) {
   try {
     const games = await Game.find().sort({ createdAt: 1 });
@@ -30,6 +29,7 @@ export async function readAll(req, res) {
   }
 }
 
+// Llegeix i retorna un sol joc per ID
 export async function readOne(req, res) {
   try {
     const game = await Game.findById(req.params.gameId);
@@ -40,6 +40,7 @@ export async function readOne(req, res) {
   }
 }
 
+// Actualitza un joc existent i retorna’l
 export async function update(req, res) {
   try {
     const updateData = {
@@ -47,9 +48,7 @@ export async function update(req, res) {
       platform: req.body.platform,
       year: req.body.year
     };
-    if (req.file) {
-      updateData.imageUrl = `/uploads/${req.file.filename}`;
-    }
+    if (req.file) updateData.imageUrl = `/uploads/${req.file.filename}`;
 
     const game = await Game.findByIdAndUpdate(
       req.params.gameId,
@@ -63,12 +62,12 @@ export async function update(req, res) {
   }
 }
 
+// Elimina un joc per ID i esborra la imatge física si existeix
 export async function remove(req, res) {
   try {
     const game = await Game.findByIdAndDelete(req.params.gameId);
     if (!game) return res.status(404).json({ error: 'Joc no trobat' });
 
-    // Borra el fichero físico si existe
     if (game.imageUrl) {
       try {
         const filePath = path.join(__dirname, '../uploads', path.basename(game.imageUrl));

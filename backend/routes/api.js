@@ -1,17 +1,16 @@
-// backend/routes/api.js
 import express from 'express';
 import multer from 'multer';
 import * as controller from '../controllers/gameController.js';
 
 const router = express.Router();
 
-// Configura multer: guarda siempre en backend/uploads, sin subcarpetas
+// Configuració de multer per gestionar pujades d'imatges (màx. 5MB a /uploads)
 const upload = multer({
-  dest: 'uploads/',           // ruta relativa a app.use('/uploads', ..)
-  limits: { fileSize: 5e6 }   // opcional: límite 5MB
+  dest: 'uploads/',
+  limits: { fileSize: 5e6 }
 });
 
-// CRUD de juegos con soporte de imagen
+// Rutes CRUD per a videojocs amb suport d'imatge
 router.post('/games', upload.single('image'), controller.create);
 router.get('/games', controller.readAll);
 router.get('/games/:gameId', controller.readOne);
